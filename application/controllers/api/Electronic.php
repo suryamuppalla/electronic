@@ -52,29 +52,4 @@ class Electronic extends REST_Controller
         $this->response(['Product created successfully.'], REST_Controller::HTTP_OK);
     }
 
-    /**
-     * Get All Data from this method.
-     *
-     * @return Response
-     */
-    public function index_put($id)
-    {
-        $input = $this->put();
-        $this->db->update('electronics', $input, array('id' => $id));
-
-        $this->response(['Product updated successfully.'], REST_Controller::HTTP_OK);
-    }
-
-    /**
-     * Get All Data from this method.
-     *
-     * @return Response
-     */
-    public function index_delete($id)
-    {
-        $this->db->delete('electronics', array('id' => $id));
-
-        $this->response(['Product deleted successfully.'], REST_Controller::HTTP_OK);
-    }
-
 }

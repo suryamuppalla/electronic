@@ -22,10 +22,6 @@
 
             <div class="d-block">
               <router-link :to="`/view/${item.id}`" class="btn btn-primary btn-sm mr-2">View Details</router-link>
-
-              <router-link :to="`/update/${item.id}`" class="btn btn-danger btn-sm">
-                Update/Delete Details
-              </router-link>
             </div>
           </div>
         </div>

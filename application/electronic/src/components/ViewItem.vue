@@ -27,10 +27,6 @@
               <p class="">Seller: {{ item.seller }}</p>
 
             </div>
-
-            <div class="mt-3">
-              <router-link :to="`/update/${item.id}`" class="btn btn-info">Update Details</router-link>
-            </div>
           </div>
         </div>
       </div>
