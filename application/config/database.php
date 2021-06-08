@@ -79,6 +79,11 @@ $db['default'] = array(
 	'username' => '2004138',
 	'password' => 'Swapna@123',
 	'database' => 'db2004138',
+
+// 	'username' => 'root',
+//     'password' => '',
+//     'database' => 'mydb',
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

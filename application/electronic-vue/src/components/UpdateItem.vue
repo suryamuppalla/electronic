@@ -87,6 +87,7 @@
 import axios from "axios";
 import {Constant} from "../Constant";
 
+// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 export default {
   name: "UpdateItem",
   data() {
@@ -126,7 +127,7 @@ export default {
 
     confirmDelete() {
       axios.delete(
-        Constant.API_URL + '/electronic/' + this.$route.params.id,
+          Constant.API_URL + '/electronic/' + this.$route.params.id,
       ).then((resp) => {
         console.log(resp);
         this.showDeleteContext = false;
@@ -139,13 +140,13 @@ export default {
     submitForm() {
       axios.put(
           Constant.API_URL + '/electronic/' + this.$route.params.id,
-        this.form
+          this.form
       ).then(() => {
         Object.keys(this.form).forEach(key => {
           this.form[key] = null;
         });
         this.$refs.images.value = null;
-        this.$router.push('/view/'+this.$route.params.id);
+        this.$router.push('/view/' + this.$route.params.id);
       }).catch((err) => {
         console.log(err)
       })
@@ -155,8 +156,8 @@ export default {
       axios.get(
           Constant.API_URL + '/electronic/' + this.$route.params.id
       ).then((resp) => {
-        if (resp && resp.data) {
-          this.form = resp.data;
+        if (resp && resp.data && resp.data.length) {
+          this.form = resp.data[0];
         }
       }).catch((err) => {
         console.log(err)
