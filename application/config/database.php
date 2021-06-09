@@ -76,13 +76,13 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => '2004138',
-	'password' => 'Swapna@123',
-	'database' => 'db2004138',
+// 	'username' => '2004138',
+// 	'password' => 'Swapna@123',
+// 	'database' => 'db2004138',
 
-// 	'username' => 'root',
-//     'password' => '',
-//     'database' => 'mydb',
+	'username' => 'root',
+    'password' => '',
+    'database' => 'mydb',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
