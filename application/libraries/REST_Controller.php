@@ -376,10 +376,6 @@ abstract class REST_Controller extends CI_Controller {
      */
     private $auth_override;
 
-    public function index_options() {
-        return $this->response(NULL, 200);
-    }
-
     /**
      * Extend this function to apply additional checking early on in the process
      *

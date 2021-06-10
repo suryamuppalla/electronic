@@ -87,6 +87,8 @@
 import axios from "axios";
 import {Constant} from "../Constant";
 
+// axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 export default {
   name: "UpdateItem",
@@ -107,6 +109,7 @@ export default {
   },
 
   created() {
+    // axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     this.fetchDetails();
   },
 
@@ -156,8 +159,8 @@ export default {
       axios.get(
           Constant.API_URL + '/electronic/' + this.$route.params.id
       ).then((resp) => {
-        if (resp && resp.data && resp.data.length) {
-          this.form = resp.data[0];
+        if (resp && resp.data && resp.data) {
+          this.form = resp.data;
         }
       }).catch((err) => {
         console.log(err)

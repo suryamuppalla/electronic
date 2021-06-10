@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://mi-linux.wlv.ac.uk/~2004138/electronic/';
+$config['base_url'] = 'http://localhost/2017781/codeigniter-demo/';
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $config['base_url'] = 'https://mi-linux.wlv.ac.uk/~2004138/electronic/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -452,8 +452,8 @@ $config['csrf_protection'] = FALSE;
 $config['csrf_token_name'] = 'csrf_test_name';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('electronic/index_put');
+$config['csrf_regenerate'] = TRUE;
+$config['csrf_exclude_uris'] = array();
 
 /*
 |--------------------------------------------------------------------------

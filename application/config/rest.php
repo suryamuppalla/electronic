@@ -546,7 +546,7 @@ $config['rest_language'] = 'english';
 | will access it through a browser
 |
 */
-$config['check_cors'] = FALSE;
+$config['check_cors'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -561,7 +561,6 @@ $config['allowed_cors_headers'] = [
   'X-Requested-With',
   'Content-Type',
   'Accept',
-  'Access-Control-Allow-Origin',
   'Access-Control-Request-Method'
 ];
 
@@ -604,7 +603,7 @@ $config['allow_any_cors_domain'] = TRUE;
 | e.g. $config['allowed_origins'] = ['http://www.example.com', 'https://spa.example.com']
 |
 */
-$config['allowed_cors_origins'] = ['https://mi-linux.wlv.ac.uk/~2004138/electronic/public'];
+$config['allowed_cors_origins'] = ['*'];
 
 /*
 |--------------------------------------------------------------------------
