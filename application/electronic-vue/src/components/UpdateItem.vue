@@ -138,7 +138,7 @@ export default {
     },
 
     submitForm() {
-      axios.put(
+      axios.patch(
           Constant.API_URL + '/electronic/' + this.$route.params.id,
           this.form
       ).then(() => {
