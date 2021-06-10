@@ -141,8 +141,8 @@ export default {
     },
 
     submitForm() {
-      axios.put(
-          Constant.API_URL + '/electronic/' + this.$route.params.id,
+      axios.post(
+          Constant.APP_URL + '/electronic/update_data',
           this.form
       ).then(() => {
         Object.keys(this.form).forEach(key => {
