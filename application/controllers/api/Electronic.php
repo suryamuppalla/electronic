@@ -30,6 +30,7 @@ class Electronic extends REST_Controller
     {
        parent::__construct();
 //        $this->config->set_item('csrf_protection', false);
+//         $this->security->get_csrf_token_name();
        $this->load->database();
     }
 
@@ -42,10 +43,11 @@ class Electronic extends REST_Controller
     {
         if (!empty($id)) {
             $data = $this->db->get_where("electronics", ['id' => $id])->row_array();
+//             $data[0]['csrf'] = $this->security->get_csrf_token_name()
         } else {
             $data = $this->db->order_by('title', 'ASC')->get("electronics")->result();
         }
-
+//         $data['token'] = $this->security->get_csrf_hash();
         $this->response($data, REST_Controller::HTTP_OK);
     }
 
@@ -70,9 +72,16 @@ class Electronic extends REST_Controller
     public function index_put($id)
     {
         $input = $this->put();
-        $this->db->update('electronics', $input, array('id' => $id));
-
-        $this->response(['Product updated successfully.'], REST_Controller::HTTP_OK);
+        if (!empty($id)) {
+            $this->db->where('id', $id);
+            $this->db->update('electronics', $input);
+            /* $data = $this->db->get_where("electronics", ['id' => $id])->row_array();
+            if ($data && $data.length) {
+                $this->db->update('electronics', $input, array('id' => $id));
+                $this->response($input, REST_Controller::HTTP_OK);
+            } */
+        }
+        $this->response($input, REST_Controller::HTTP_OK);
     }
 
     /**
@@ -82,7 +91,10 @@ class Electronic extends REST_Controller
      */
     public function index_delete($id)
     {
-        $this->db->delete('electronics', array('id' => $id));
+//         $this->db->delete('electronics', array('id' => $id));
+
+        $this->db->where('id', $id);
+        $this->db->delete('electronics');
 
         $this->response(['Product deleted successfully.'], REST_Controller::HTTP_OK);
     }
