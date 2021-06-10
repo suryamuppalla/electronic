@@ -109,6 +109,7 @@ export default {
   },
 
   created() {
+    // axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     this.fetchDetails();
   },
 
