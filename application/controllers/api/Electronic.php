@@ -29,7 +29,7 @@ class Electronic extends REST_Controller
     public function __construct()
     {
        parent::__construct();
-       $this->config->set_item('csrf_protection', false);
+//        $this->config->set_item('csrf_protection', false);
        $this->load->database();
     }
 
