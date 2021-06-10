@@ -558,11 +558,11 @@ $config['check_cors'] = TRUE;
 */
 $config['allowed_cors_headers'] = [
   'Origin',
-  'X-Requested-With',
-  'Content-Type',
-  'Accept',
-  'Access-Control-Allow-Origin',
-  'Access-Control-Request-Method'
+'X-Requested-With',
+'Content-Type',
+'Accept',
+'Access-Control-Request-Method',
+'Authorization',
 ];
 
 /*
@@ -575,11 +575,11 @@ $config['allowed_cors_headers'] = [
 */
 $config['allowed_cors_methods'] = [
   'GET',
-  'POST',
-  'OPTIONS',
-  'PUT',
-  'PATCH',
-  'DELETE'
+    'POST',
+    'OPTIONS',
+    'PUT',
+    'PATCH',
+    'DELETE'
 ];
 
 /*
@@ -604,7 +604,7 @@ $config['allow_any_cors_domain'] = TRUE;
 | e.g. $config['allowed_origins'] = ['http://www.example.com', 'https://spa.example.com']
 |
 */
-$config['allowed_cors_origins'] = ['https://mi-linux.wlv.ac.uk/~2004138/electronic/public', 'http://localhost:8080'];
+$config['allowed_cors_origins'] = [];
 
 /*
 |--------------------------------------------------------------------------
