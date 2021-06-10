@@ -68,8 +68,11 @@ export default {
       })
     },
     confirmDelete() {
-      axios.delete(
-          Constant.API_URL + '/electronic/' + this.$route.params.id,
+      axios.post(
+          Constant.API_URL + '/electronic',
+          {
+            id: this.$route.params.id
+          }
       ).then((resp) => {
         console.log(resp);
         this.showDeleteContext = false;
