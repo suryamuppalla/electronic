@@ -129,8 +129,12 @@ export default {
     },
 
     confirmDelete() {
-      axios.delete(
-          Constant.API_URL + '/electronic/' + this.$route.params.id,
+      axios.post(
+          Constant.API_URL + '/electronic',
+          {
+            id: this.$route.params.id,
+            type: 'DELETE'
+          }
       ).then((resp) => {
         console.log(resp);
         this.showDeleteContext = false;
@@ -142,7 +146,7 @@ export default {
 
     submitForm() {
       axios.post(
-          Constant.APP_URL + '/electronic/update_data',
+          Constant.API_URL + '/electronic',
           this.form
       ).then(() => {
         Object.keys(this.form).forEach(key => {

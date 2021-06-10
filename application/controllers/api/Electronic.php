@@ -64,8 +64,13 @@ class Electronic extends REST_Controller
     {
         $data = json_decode(file_get_contents('php://input'), true);
         if ($this->db->where('id', $data['id'])) {
-            $this->db->update('electronics', $data);
-            $this->response(['Product Updated successfully.'], REST_Controller::HTTP_OK);
+            if ($data['type'] && $data['type'] === 'DELETE') {
+                $this->db->delete('electronics', array('id' => $data['id']));
+                $this->response(['Product Deleted successfully.'], REST_Controller::HTTP_OK);
+            } else {
+                $this->db->update('electronics', $data);
+                $this->response(['Product Updated successfully.'], REST_Controller::HTTP_OK);
+            }
         } else {
             $this->db->insert('electronics', $data);
             $this->response(['Product created successfully.'], REST_Controller::HTTP_OK);
