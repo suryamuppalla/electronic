@@ -12,13 +12,13 @@ header('Content-type: application/json');
 
 // header('Access-Control-Allow-Origin: https://mi-linux.wlv.ac.uk/~2004138/electronic/public/', false);
 
-// require APPPATH . '/libraries/REST_Controller.php';
+require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
 //use Illuminate\Http\Request;
 
-class Electronic extends CI_Controller
+class Electronic extends REST_Controller
 {
 
     /**
@@ -69,9 +69,9 @@ class Electronic extends CI_Controller
      *
      * @return Response
      */
-    public function update($id)
+    public function index_put($id)
     {
-        $input = json_decode(file_get_contents('php://input'), true);
+        $input = $this->put();
         if (!empty($id)) {
             $this->db->where('id', $id);
             $this->db->update('electronics', $input);
@@ -89,7 +89,7 @@ class Electronic extends CI_Controller
      *
      * @return Response
      */
-    public function delete($id)
+    public function index_delete($id)
     {
 //         $this->db->delete('electronics', array('id' => $id));
 
