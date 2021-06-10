@@ -63,7 +63,7 @@ class Electronic extends REST_Controller
     public function index_post()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        if ($this->db->where('id', $data['id'])) {
+        if ($data['id'] && $this->db->where('id', $data['id'])) {
             if ($data['type'] && $data['type'] === 'DELETE') {
                 $this->db->delete('electronics', array('id' => $data['id']));
                 $this->response(['Product Deleted successfully.'], REST_Controller::HTTP_OK);
