@@ -625,4 +625,6 @@ $config['allowed_cors_origins'] = ['https://mi-linux.wlv.ac.uk/~2004138/electron
 | http://docs.sencha.com/extjs/6.5.2/classic/Ext.data.proxy.Rest.html#cfg-withCredentials
 |
 */
-$config['forced_cors_headers'] = [];
+$config['forced_cors_headers'] = [
+    'Access-Control-Allow-Origin' => '*'
+];
