@@ -46,10 +46,11 @@ class Electronic extends REST_Controller
      */
     public function index_get($id = 0)
     {
+        $str = $this->input->get('search', TRUE);
         if (!empty($id)) {
             $data = $this->db->get_where("electronics", ['id' => $id])->row_array();
         } else {
-            $data = $this->db->order_by('title', 'ASC')->get("electronics")->result();
+            $data = $this->db->like('title', strtolower($str))->order_by('title', 'ASC')->get("electronics")->result();
         }
 
         $this->response($data, REST_Controller::HTTP_OK);

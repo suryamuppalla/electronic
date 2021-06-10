@@ -5,6 +5,25 @@
         <h2 class="text-primary mb-3">Electronics</h2>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <input type="text" placeholder="Search..." v-on:keyup="fetchData" class="form-control">
+        </div>
+
+        <div class="d-block mb-3" v-if="isSearching">
+          <p class="text-secondary">Please wait...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" v-if="noData">
+      <div class="col-lg-6">
+        <p class="text-secondary">No Results Found...</p>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-lg-6" v-for="item in items" :key="item.id">
         <div class="media mb-3 border p-2">
@@ -43,6 +62,8 @@ export default {
   data() {
     return {
       items: [],
+      isSearching: false,
+      noData: false,
       imgPath: Constant.IMG_URL
     }
   },
@@ -50,15 +71,24 @@ export default {
     this.fetchData();
   },
   methods: {
-    fetchData() {
+    fetchData(search) {
+      let text = ``;
+      if (search && search.target && search.target.value) {
+        text = search.target.value;
+        this.items = [];
+        this.isSearching = true;
+      }
       axios.get(
-          Constant.API_URL + '/electronic'
+          Constant.API_URL + '/electronic?search=' + text
       ).then((resp) => {
         console.log(resp);
+        this.isSearching = false;
         if (resp && resp.data && resp.data.length) {
           this.items = resp.data;
         }
+        this.noData = !resp.data || !resp.data.length;
       }).catch((err) => {
+        this.isSearching = false;
         console.log(err)
       })
     }
