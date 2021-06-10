@@ -1,7 +1,9 @@
-<Limit GET POST PUT DELETE>
-    order deny,allow
-    allow from all
+<Limit GET POST PUT OPTIONS DELETE PATCH HEAD>
+    Require all granted
 </Limit>
+<LimitExcept GET POST PUT OPTIONS DELETE PATCH HEAD>
+    Require all denied
+</LimitExcept>
 
 <IfModule authz_core_module>
 	Require all denied
