@@ -66,7 +66,7 @@ class Electronic extends REST_Controller
      *
      * @return Response
      */
-    public function index_patch($id)
+    public function index_put($id)
     {
         $input = $this->put();
         $this->db->update('electronics', $input, array('id' => $id));
