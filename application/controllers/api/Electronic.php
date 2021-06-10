@@ -79,6 +79,7 @@ class Electronic extends REST_Controller
 //         $this->db->update('electronics', $input, array('id' => $id));
 //
 //         $this->response(['Product updated successfully.'], REST_Controller::HTTP_OK);
+        header('Access-Control-Allow-Origin: *');
         $this->db->where('id', $id);
         $this->db->update('electronics', $this->put());
         echo 'order has successfully been updated';
