@@ -24,13 +24,16 @@ class Electronic extends REST_Controller
         header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization");
         header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token');
         header("Access-Control-Allow-Headers: X-Requested-With");
-        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-                header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-                exit(0);
-        }
+//         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+//             if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+//                 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+//             if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+//                 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+//                 exit(0);
+//         }
+if ( "OPTIONS" === $_SERVER['REQUEST_METHOD'] ) {
+    die();
+}
         parent::__construct();
         $this->load->database();
     }
