@@ -12,13 +12,13 @@ header('Content-type: application/json');
 
 // header('Access-Control-Allow-Origin: https://mi-linux.wlv.ac.uk/~2004138/electronic/public/', false);
 
-require APPPATH . '/libraries/REST_Controller.php';
+// require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
 //use Illuminate\Http\Request;
 
-class Electronic extends REST_Controller
+class Electronic extends CI_Controller
 {
 
     /**
