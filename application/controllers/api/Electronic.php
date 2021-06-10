@@ -71,7 +71,7 @@ class Electronic extends REST_Controller
      */
     public function update($id)
     {
-        $input = $this->put();
+        $input = json_decode(file_get_contents('php://input'), true);
         if (!empty($id)) {
             $this->db->where('id', $id);
             $this->db->update('electronics', $input);
