@@ -69,7 +69,7 @@ class Electronic extends REST_Controller
      *
      * @return Response
      */
-    public function index_put($id)
+    public function update($id)
     {
         $input = $this->put();
         if (!empty($id)) {
@@ -89,7 +89,7 @@ class Electronic extends REST_Controller
      *
      * @return Response
      */
-    public function index_delete($id)
+    public function delete($id)
     {
 //         $this->db->delete('electronics', array('id' => $id));
 
