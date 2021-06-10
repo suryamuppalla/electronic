@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Methods: GET, OPTIONS");
+header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
 
 require APPPATH . '/libraries/REST_Controller.php';
 
@@ -19,11 +20,11 @@ class Electronic extends REST_Controller
      */
     public function __construct()
     {
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-        header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization");
-        header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token');
-        header("Access-Control-Allow-Headers: X-Requested-With");
+//         header("Access-Control-Allow-Origin: *");
+//         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+//         header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization");
+//         header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token');
+//         header("Access-Control-Allow-Headers: X-Requested-With");
 //         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 //             if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
 //                 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
@@ -31,9 +32,9 @@ class Electronic extends REST_Controller
 //                 header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 //                 exit(0);
 //         }
-if ( "OPTIONS" === $_SERVER['REQUEST_METHOD'] ) {
-    die();
-}
+// if ( "OPTIONS" === $_SERVER['REQUEST_METHOD'] ) {
+//     die();
+// }
         parent::__construct();
         $this->load->database();
     }

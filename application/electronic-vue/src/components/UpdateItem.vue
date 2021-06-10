@@ -88,8 +88,8 @@ import axios from "axios";
 import {Constant} from "../Constant";
 
 // axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
 export default {
   name: "UpdateItem",
   data() {
