@@ -75,10 +75,13 @@ class Electronic extends REST_Controller
      */
     public function index_put($id)
     {
-        $input = $this->put();
-        $this->db->update('electronics', $input, array('id' => $id));
-
-        $this->response(['Product updated successfully.'], REST_Controller::HTTP_OK);
+//         $input = $this->put();
+//         $this->db->update('electronics', $input, array('id' => $id));
+//
+//         $this->response(['Product updated successfully.'], REST_Controller::HTTP_OK);
+        $this->db->where('id', $id);
+        $this->db->update('electronics', $this->put());
+        echo 'order has successfully been updated';
     }
 
     /**
