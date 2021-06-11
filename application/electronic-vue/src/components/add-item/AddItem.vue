@@ -4,20 +4,22 @@
       <div class="col-lg-6 offset-lg-3">
         <div class="card">
           <div class="card-body">
+            <h2 class="text-primary">Add New Electronic Item</h2>
             <form v-on:submit.prevent="submitForm">
               <div class="form-group">
                 <label>Title</label>
-                <input type="text" class="form-control" placeholder="Title" v-model="form.title">
+                <input id="title" type="text" class="form-control" placeholder="Title" v-model="form.title">
               </div>
 
               <div class="form-group">
                 <label>Description</label>
-                <textarea class="form-control" placeholder="Description" v-model="form.description"></textarea>
+                <textarea id="description" class="form-control" placeholder="Description"
+                          v-model="form.description"></textarea>
               </div>
 
               <div class="form-group">
                 <label>Price</label>
-                <input type="number" class="form-control" placeholder="Price" v-model="form.price">
+                <input id="price" type="number" class="form-control" placeholder="Price" v-model="form.price">
               </div>
 
               <div class="form-group">
@@ -64,7 +66,7 @@
 
 <script>
 import axios from 'axios';
-import {Constant} from "../Constant";
+import {Constant} from "../../Constant";
 
 export default {
   name: "AddItem",
@@ -72,6 +74,7 @@ export default {
   data() {
     return {
       showAlert: false,
+      imgPath: Constant.IMG_URL,
       form: {
         title: null,
         description: null,
@@ -97,30 +100,33 @@ export default {
     },
 
     submitForm() {
-      axios({
-        url: Constant.API_URL + '/upload',
-        method: 'POST',
-        data: this.form.uploadImage,
-        headers: {"Content-Type": "multipart/form-data"},
-      }).then((resp) => {
+      return new Promise(resolve => {
+        axios({
+          url: Constant.API_URL + '/upload',
+          method: 'POST',
+          data: this.form.uploadImage,
+          headers: {"Content-Type": "multipart/form-data"},
+        }).then((resp) => {
 
-        delete this.form.uploadImage;
-        this.form.image = resp.data;
-        axios.post(
-            Constant.API_URL + '/electronic',
-            this.form
-        ).then(() => {
-          Object.keys(this.form).forEach(key => {
-            this.form[key] = null;
+          delete this.form.uploadImage;
+          this.form.image = resp.data;
+          axios.post(
+              Constant.API_URL + '/electronic',
+              this.form
+          ).then(() => {
+            Object.keys(this.form).forEach(key => {
+              this.form[key] = null;
+            });
+            this.$refs.images.value = null;
+            this.showAlert = true;
+            resolve(true);
+          }).catch((err) => {
+            console.log(err)
           });
-          this.$refs.images.value = null;
-          this.showAlert = true;
-        }).catch((err) => {
-          console.log(err)
+        }).catch(error => {
+          console.log(error);
         });
-      }).catch(error => {
-        console.log(error);
-      });
+      })
     }
   }
 }

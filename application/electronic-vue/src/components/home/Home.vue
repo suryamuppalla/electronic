@@ -12,8 +12,8 @@
           <input type="text" placeholder="Search..." v-on:keyup="fetchData" class="form-control">
         </div>
 
-        <div class="d-block mb-3" v-if="isSearching">
-          <p class="text-secondary">Please wait...</p>
+        <div class="d-block mb-3" id="please-wait-block" v-if="isSearching">
+          <p id="please-wait" class="text-secondary">Please wait...</p>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" v-if="items?.length">
       <div class="col-lg-6" v-for="item in items" :key="item.id">
         <div class="media mb-3 border p-2">
           <img :src="imgPath+item.image" class="mr-3" alt="...">
@@ -55,7 +55,7 @@
 
 <script>
 import axios from "axios";
-import {Constant} from "../Constant";
+import {Constant} from "../../Constant";
 
 export default {
   name: 'Home',
@@ -67,29 +67,27 @@ export default {
       imgPath: Constant.IMG_URL
     }
   },
-  created() {
-    this.fetchData();
+  async created() {
+    await this.fetchData();
   },
   methods: {
-    fetchData(search) {
+    async fetchData(search) {
       let text = ``;
       if (search && search.target && search.target.value) {
         text = search.target.value;
         this.items = [];
-        this.isSearching = true;
       }
-      axios.get(
+      this.isSearching = true;
+      await axios.get(
           Constant.API_URL + '/electronic?search=' + text
       ).then((resp) => {
-        console.log(resp);
         this.isSearching = false;
         if (resp && resp.data && resp.data.length) {
           this.items = resp.data;
         }
         this.noData = !resp.data || !resp.data.length;
-      }).catch((err) => {
+      }).catch(() => {
         this.isSearching = false;
-        console.log(err)
       })
     }
   }

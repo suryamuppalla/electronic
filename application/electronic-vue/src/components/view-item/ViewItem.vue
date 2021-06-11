@@ -1,5 +1,12 @@
 <template>
   <div class="container mt-3">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>View Electronic Item Details</h2>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-lg-3">
         <div class="card p-0">
@@ -41,7 +48,7 @@
 
 <script>
 import axios from "axios";
-import {Constant} from "../Constant";
+import {Constant} from "../../Constant";
 
 export default {
   name: "ViewItem",

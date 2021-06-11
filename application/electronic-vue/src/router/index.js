@@ -1,8 +1,8 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-import Home from "../components/Home";
-import AddItem from "../components/AddItem";
-import UpdateItem from "../components/UpdateItem";
-import ViewItem from "../components/ViewItem";
+import Home from "../components/home/Home";
+import AddItem from "../components/add-item/AddItem";
+import UpdateItem from "../components/update-item/UpdateItem";
+import ViewItem from "../components/view-item/ViewItem";
 
 const routes = [
     {
