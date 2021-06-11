@@ -44,3 +44,11 @@ test('IMG Url exist', () => {
     const {vm} = wrapper;
     expect(vm.imgUrl).toStrictEqual(Constant.IMG_URL)
 })
+
+test('Update Details button should exist', () => {
+    expect(wrapper.find('.btn-info').text()).toBe('Update Details');
+})
+
+test('Delete button should exist', () => {
+    expect(wrapper.find('.btn-danger').text()).toBe('Delete');
+})

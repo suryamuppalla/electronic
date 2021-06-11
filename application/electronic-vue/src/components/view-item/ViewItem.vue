@@ -29,7 +29,7 @@
 
 
             <div class="mt-3">
-              <p class="">Manufacturer: {{ item.manufacturer }}</p>
+              <p class="" id="manufacturer">Manufacturer: {{ item.manufacturer }}</p>
 
               <p class="">Seller: {{ item.seller }}</p>
 

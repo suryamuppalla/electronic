@@ -2,7 +2,7 @@
   <div class="container mt-3">
     <div class="row">
       <div class="col-lg-12">
-        <h5 class="text-center mb-3 text-primary">Update Item Information</h5>
+        <h2 class="text-center mb-3 text-primary">Update Item Information</h2>
       </div>
     </div>
     <div class="row">
